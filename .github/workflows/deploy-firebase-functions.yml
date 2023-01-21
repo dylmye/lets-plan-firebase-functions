@@ -1,0 +1,37 @@
+name: Deploy Firebase Cloud Functions
+'on':
+  push:
+    branches:
+      - main
+    paths:
+      - 'functions/**'
+
+jobs:
+  authenticate_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check out code"
+        uses: actions/checkout@v3
+
+      - name: 'Set up Node.js LTS'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+          dir: 'functions'
+
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - name: Deploy Functions
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: deploy
+          dir: 'functions'
