@@ -25,3 +25,8 @@ After you've set that up, set up these action secrets on your repo:
 ![](https://user-images.githubusercontent.com/7024578/213885829-f4d8dd4c-5ab0-4b1f-843e-2baaa9cc6f55.png)
 
 * `SERVICE_ACCOUNT`: The email address service account you set up, e.g. `my-service-account@my-project.iam.gserviceaccount.com`
+
+Finally, [add the following roles](https://cloud.google.com/build/docs/deploying-builds/deploy-firebase#required_iam_permissions) to the IAM prinicpal ending in "@cloudbuild.gserviceaccount.com":
+
+* Firebase Admin
+* API Keys Admin
