@@ -28,6 +28,6 @@ module.exports = {
     "quotes": ["error", "double"],
     "import/no-unresolved": 0,
     "object-curly-spacing": ["error", "always"],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["warn", "unix"],
   },
 };
