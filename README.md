@@ -14,7 +14,7 @@ A number of Firebase Gen 1 and Gen 2 Cloud Functions.
 
 ## Setup
 
-Set the `.firebaserc` file to use your firebase's project name. You need to enable the [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com) to deploy from GitHub Actions.
+Set the `.firebaserc` file to use your firebase's project name. You need to enable the [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com) and the [Artifact Registry API](https://console.cloud.google.com/apis/library/artifactregistry.googleapis.com) to deploy from GitHub Actions.
 
 To deploy functions when pushing to main branch, you'll need to set up the service account and workload identity federation as denoted in the [terraform configuration](https://github.com/dylmye/lets-plan-infra).
 
