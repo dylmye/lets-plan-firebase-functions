@@ -4,13 +4,27 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/dylmye/lets-plan-firebase-functions/actions/workflows/deploy-firebase-functions.yml"><img alt="The status badge for this project's build" src="https://img.shields.io/github/actions/workflow/status/dylmye/lets-plan-firebase-functions/deploy-firebase-functions.yml?logo=github"></a>
+  <a href="https://github.com/dylmye/lets-plan-firebase-functions/blob/main/LICENSE"><img alt="The status badge for the licence of this project" src="https://img.shields.io/github/license/dylmye/lets-plan-firebase-functions"></a>
+  <a href="https://snyk.io"><img alt="The status badge for the Snyk-detected vulnerabilities count for this project" src="https://img.shields.io/snyk/vulnerabilities/github/dylmye/lets-plan-firebase-functions?logo=snyk"></a>
+</p>
+
+<p align="center">
+    <a href="">Webapp</a> •
+    <a href="">Infrastructure</a> •
+    <strong>Firebase Functions</strong>
+</p>
+
+---
+
 ## Firebase Functions
 
 A number of Firebase Gen 1 and Gen 2 Cloud Functions.
 
 ### Functions
 
-* `removeRelatedOnTripDelete` - Triggered by trip delete. Deletes subcollections and, if uploaded, the Firebase Storage image (stored on the trip as `trip.image`)
+-   `removeRelatedOnTripDelete` - Triggered by trip delete. Deletes subcollections and, if uploaded, the Firebase Storage image (stored on the trip as `trip.image`)
 
 ## Setup
 
@@ -20,13 +34,13 @@ To deploy functions when pushing to main branch, you'll need to set up the servi
 
 After you've set that up, set up these action secrets on your repo:
 
-* `WORKLOAD_IDENTITY_PROVIDER`: The workload identity provider's "default audience", minus the iam.googleapis.com bit:
+-   `WORKLOAD_IDENTITY_PROVIDER`: The workload identity provider's "default audience", minus the iam.googleapis.com bit:
 
 ![](https://user-images.githubusercontent.com/7024578/213885829-f4d8dd4c-5ab0-4b1f-843e-2baaa9cc6f55.png)
 
-* `SERVICE_ACCOUNT`: The email address service account you set up, e.g. `my-service-account@my-project.iam.gserviceaccount.com`
+-   `SERVICE_ACCOUNT`: The email address service account you set up, e.g. `my-service-account@my-project.iam.gserviceaccount.com`
 
 Finally, [add the following roles](https://cloud.google.com/build/docs/deploying-builds/deploy-firebase#required_iam_permissions) to the IAM prinicpal ending in "@cloudbuild.gserviceaccount.com":
 
-* Firebase Admin
-* API Keys Admin
+-   Firebase Admin
+-   API Keys Admin
