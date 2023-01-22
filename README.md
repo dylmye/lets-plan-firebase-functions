@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-    <a href="">Webapp</a> •
-    <a href="">Infrastructure</a> •
+    <a href="https://github.com/dylmye/lets-plan">Webapp</a> •
+    <a href="https://github.com/dylmye/lets-plan-infra">Infrastructure</a> •
     <strong>Firebase Functions</strong>
 </p>
 
