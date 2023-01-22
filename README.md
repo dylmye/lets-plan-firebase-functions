@@ -6,8 +6,8 @@
 
 <p align="center">
   <a href="https://github.com/dylmye/lets-plan-firebase-functions/actions/workflows/deploy-firebase-functions.yml"><img alt="The status badge for this project's build" src="https://img.shields.io/github/actions/workflow/status/dylmye/lets-plan-firebase-functions/deploy-firebase-functions.yml?logo=github"></a>
-  <a href="https://github.com/dylmye/lets-plan-firebase-functions/blob/main/LICENSE"><img alt="The status badge for the licence of this project" src="https://img.shields.io/github/license/dylmye/lets-plan-firebase-functions"></a>
-  <a href="https://snyk.io"><img alt="The status badge for the Snyk-detected vulnerabilities count for this project" src="https://img.shields.io/snyk/vulnerabilities/github/dylmye/lets-plan-firebase-functions?logo=snyk"></a>
+  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fdylmye%2Flets-plan-firebase-functions?ref=badge_shield"><img alt="FOSSA status" src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdylmye%2Flets-plan-firebase-functions.svg?type=shield"></a>
+  <a href="https://snyk.io"><img alt="The status badge for the Snyk-detected vulnerabilities count for this project" src="https://img.shields.io/snyk/vulnerabilities/github/dylmye/lets-plan-firebase-functions/functions/package.json.svg?logo=snyk"></a>
 </p>
 
 <p align="center">
