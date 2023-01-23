@@ -22,15 +22,16 @@ setGlobalOptions({
  */
 export const removeRelatedOnTripDelete = listener
     .document("trips/{tripId}")
-    .onDelete(async ({ data, ref }, { params }) => {
+    // can't deconstruct here, see https://stackoverflow.com/q/65725756
+    .onDelete(async (document, { params }) => {
       console.debug(`🏓 Delete request for trip ID ${params.tripId} recieved.`);
       console.debug("🚽 Dump incoming...");
-      console.debug(JSON.stringify(data()));
+      console.debug(JSON.stringify(document?.data()));
 
       // if the user uploaded a cover image, this is its URL
       // looks like:
       // https://firebasestorage.googleapis.com/v0/b/lets-plan-firebase.appspot.com/o/trip-thumbs%2FTHE_FILE_NAME_HERE.EXTENSION?alt=media
-      const storageUrl = data()?.image as string;
+      const storageUrl = document?.data()?.image as string;
 
       if (storageUrl) {
         console.debug("📷 Trip image found. Deleting...");
@@ -48,7 +49,7 @@ export const removeRelatedOnTripDelete = listener
         console.debug("🚫 No trip image found, continuing...");
       }
 
-      await firestore.recursiveDelete(ref);
+      await firestore.recursiveDelete(document?.ref);
       console.debug("✔ Deleted the trip and subcollections successfully!");
       console.debug("🎉 Have a good day.");
     });
