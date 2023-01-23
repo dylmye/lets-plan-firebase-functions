@@ -24,6 +24,8 @@ export const removeRelatedOnTripDelete = listener
     .document("trips/{tripId}")
     .onDelete(async ({ data, ref }, { params }) => {
       console.debug(`🏓 Delete request for trip ID ${params.tripId} recieved.`);
+      console.debug("🚽 Dump incoming...");
+      console.debug(JSON.stringify(data()));
 
       // if the user uploaded a cover image, this is its URL
       // looks like:
@@ -42,6 +44,8 @@ export const removeRelatedOnTripDelete = listener
         const file = getStorage().bucket().file(`trip-thumbs/${finalSplit[0]}`);
         await file.delete();
         console.debug("✔ Deleted trip image successfully!");
+      } else {
+        console.debug("🚫 No trip image found, continuing...");
       }
 
       await firestore.recursiveDelete(ref);
