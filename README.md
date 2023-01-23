@@ -26,6 +26,8 @@ A number of Firebase Gen 1 and Gen 2 Cloud Functions.
 
 -   `removeRelatedOnTripDelete` - Triggered by trip delete. Deletes subcollections and, if uploaded, the Firebase Storage image (stored on the trip as `trip.image`)
 
+![screenshot of logs from removeRelatedOnTripDelete function](https://user-images.githubusercontent.com/7024578/213955660-7eb307f3-c991-496a-a8c0-1067b5db783a.png)
+
 ## Setup
 
 Set the `.firebaserc` file to use your firebase's project name. You need to enable the [Cloud Build API](https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com) and the [Artifact Registry API](https://console.cloud.google.com/apis/library/artifactregistry.googleapis.com) to deploy from GitHub Actions.

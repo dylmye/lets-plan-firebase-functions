@@ -25,8 +25,6 @@ export const removeRelatedOnTripDelete = listener
     // can't deconstruct here, see https://stackoverflow.com/q/65725756
     .onDelete(async (document, { params }) => {
       console.debug(`🏓 Delete request for trip ID ${params.tripId} recieved.`);
-      console.debug("🚽 Dump incoming...");
-      console.debug(JSON.stringify(document?.data()));
 
       // if the user uploaded a cover image, this is its URL
       // looks like:
