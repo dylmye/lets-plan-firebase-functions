@@ -3,7 +3,7 @@ import { getStorage } from "firebase-admin/storage";
 import { initializeFirestore } from "firebase-admin/firestore";
 
 import { setGlobalOptions } from "firebase-functions/v2";
-import { firestore as listener } from "firebase-functions/v1";
+import { firestore as listener, auth } from "firebase-functions/v1";
 
 const App = initializeApp({
   storageBucket: "lets-plan-firebase.appspot.com",
@@ -24,7 +24,7 @@ export const removeRelatedOnTripDelete = listener
     .document("trips/{tripId}")
     // can't deconstruct here, see https://stackoverflow.com/q/65725756
     .onDelete(async (document, { params }) => {
-      console.debug(`🏓 Delete request for trip ID ${params.tripId} recieved.`);
+      console.debug(`🏓 Delete request for trip ID ${params.tripId} received.`);
 
       // if the user uploaded a cover image, this is its URL
       // looks like:
@@ -51,3 +51,14 @@ export const removeRelatedOnTripDelete = listener
       console.debug("✔ Deleted the trip and subcollections successfully!");
       console.debug("🎉 Have a good day.");
     });
+
+export const deleteTripsOnUserDelete = auth.user().onDelete(async ({ uid }) => {
+    console.debug(`🏓 Delete request for user ID ${uid} received.`);
+    const usersTrips = await firestore.collection('trips').where('userId', '==', uid).get();
+    console.debug(`🔎 Found ${usersTrips.size} trips for this user to delete....`);
+    usersTrips.forEach(async (doc) => {
+        await doc.ref.delete();
+    });
+    console.debug('✔ Deleted this user\'s trips successfully!');
+    console.debug("🎉 Have a good day.");
+});
