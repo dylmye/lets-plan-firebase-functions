@@ -53,12 +53,14 @@ export const removeRelatedOnTripDelete = listener
     });
 
 export const deleteTripsOnUserDelete = auth.user().onDelete(async ({ uid }) => {
-    console.debug(`🏓 Delete request for user ID ${uid} received.`);
-    const usersTrips = await firestore.collection('trips').where('userId', '==', uid).get();
-    console.debug(`🔎 Found ${usersTrips.size} trips for this user to delete....`);
-    usersTrips.forEach(async (doc) => {
-        await doc.ref.delete();
-    });
-    console.debug('✔ Deleted this user\'s trips successfully!');
-    console.debug("🎉 Have a good day.");
+  console.debug(`🏓 Delete request for user ID ${uid} received.`);
+  const usersTrips = await firestore.collection("trips")
+      .where("userId", "==", uid)
+      .get();
+  console.debug(`🔎 Found ${usersTrips.size} trips for this user to delete....`);
+  usersTrips.forEach(async (doc) => {
+    await doc.ref.delete();
+  });
+  console.debug("✔ Deleted this user's trips successfully!");
+  console.debug("🎉 Have a good day.");
 });
